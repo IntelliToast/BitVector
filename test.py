@@ -22,10 +22,8 @@ def flip_test(vector : BitVector):
     return vector
 
 def invert_test(vector : BitVector):
-    print(vector)
     vector.invert()
-    print(vector)
-    print(vector.vector_value())
+    assert vector.vector_value() == 991
     return vector
 
 

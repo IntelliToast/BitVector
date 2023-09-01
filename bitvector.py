@@ -37,25 +37,25 @@ class BitVector():
         return self.vector
     
     def bit_value(self, index : int) -> bool:
-        if index < self.length:
+        if index < self.length and index >= 0:
             return bool(self.vector & (1 << index))
         else:
-            raise BitVectorError(f"Index {index} is out of bound for a vector of length {self.length}!")
+            raise BitVectorError(f"Index {index} is out of bound for a vector of length {self.length}! Index must be positive or zero!")
     
     def set(self, index : int, value : bool):
-        if index < self.length:
+        if index < self.length and index >= 0:
             if value:
                 self.vector |= 1 << index
             else:
                 self.vector &= ~(1 << index)
         else:
-            raise BitVectorError(f"Index {index} is out of bound for a vector of length {self.length}!")
+            raise BitVectorError(f"Index {index} is out of bound for a vector of length {self.length}! Index must be positive or zero!")
         
     def flip(self, index : int):
-        if index < self.length:
+        if index < self.length and index >= 0:
             self.vector ^= 1 << index
         else:
-            raise BitVectorError(f"Index {index} is out of bound for a vector of length {self.length}!")
+            raise BitVectorError(f"Index {index} is out of bound for a vector of length {self.length}! Index must be positive or zero!")
         
     def invert(self):
         self.vector ^= (2**(self.length+1)-1)
